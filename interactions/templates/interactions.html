@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block 'head' %}
+    <title>Interações</title>
+{% endblock 'head' %}
+
+{% block 'body' %}
+    <div class='container'>
+        <div>
+            {% if interactions_messages %}
+                {% for interactions_message in interactions_messages %}
+                    {{interactions_message.send_date}}
+                    {{interactions_message.content}}
+                    <br>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <dir>
+            <form action="{% url "interactions" %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="message">
+                <input type="submit" value="Enviar">
+            </form>
+        </dir>
+    </div>
+{% endblock 'body' %}
+
+

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block 'head' %}
+    <title>Chat Home</title>
+{% endblock 'head' %}
+
+{% block 'body' %}
+    <div class="container">
+        <h1>Chat Home Page</h1>
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    <section class="alert {{message.tags}}">
+                        {{message}}
+                    </section>
+                {% endfor %}
+            {% endif %}
+            <ul>
+                <li><a href="{% url "login" %}">Logar</a></li>
+                <li><a href="{% url "cadastrar" %}">Cadastrar</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock 'body' %}
